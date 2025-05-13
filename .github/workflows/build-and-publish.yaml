@@ -48,5 +48,5 @@ jobs:
         context: .
         platforms: linux/amd64,linux/arm64
         file: ./Dockerfile
-        tags: ghcr.io/homelab-peej/ping-server:${{ github.ref_name }} #,ghcr.io/homelab-peej/ping-server:latest
+        tags: ghcr.io/homelab-peej/ping-server:${{ github.ref_name }},ghcr.io/homelab-peej/ping-server:latest
         push: true
