@@ -1,0 +1,16 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:recommended',
+    'docker:enableMajor',
+    'helpers:pinGitHubActionDigests',
+    ':dependencyDashboard',
+    ':disableRateLimiting',
+    'github>homelab-peej/ping-server//.github/renovate/autoMerge.json5',
+  ],
+  dependencyDashboardTitle: 'Renovate Dashboard 🤖',
+  suppressNotifications: [
+    'prEditedNotification',
+    'prIgnoreNotification',
+  ],
+}
