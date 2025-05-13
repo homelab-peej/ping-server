@@ -35,7 +35,6 @@ EXPOSE 8080
 LABEL org.label-schema.name="Ping Server"
 LABEL org.label-schema.description="A simple ping server that responds with pong."
 LABEL org.label-schema.version="${{ github.ref_name }}"
-LABEL org.label-schema.build-date=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
 LABEL org.label-schema.vcs-url="https://github.com/homelab-peej/ping-server"
 LABEL org.label-schema.vcs-ref="${{ github.sha }}"
 
