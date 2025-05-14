@@ -10,44 +10,44 @@ This repository contains a simple HTTP web server that responds with "pong" when
    apiVersion: apps/v1
    kind: DaemonSet
    metadata:
-   name: ping-server
-   labels:
-      app.kubernetes.io/name: ping-server
+     name: ping-server
+     labels:
+       app.kubernetes.io/name: ping-server
    spec:
-   selector:
-      matchLabels:
+     selector:
+       matchLabels:
          app.kubernetes.io/name: ping-server
-   template:
-      metadata:
+     template:
+       metadata:
          labels:
-         app.kubernetes.io/name: ping-server
-      spec:
-         containers:
-         - name: ping-server
-            image: ghcr.io/homelab-peej/ping-server-test:latest
-            ports:
-               - containerPort: 8080
-            livenessProbe:
-               httpGet:
-               path: /healthz
-               port: 8080
-               initialDelaySeconds: 5
-               periodSeconds: 10
-               failureThreshold: 2
-            readinessProbe:
-               httpGet:
-               path: /readyz
-               port: 8080
-               initialDelaySeconds: 5
-               periodSeconds: 2
-               failureThreshold: 2
-            startupProbe:
-               httpGet:
-               path: /startz
-               port: 8080
-               initialDelaySeconds: 5
-               periodSeconds: 2
-               failureThreshold: 2
+           app.kubernetes.io/name: ping-server
+        spec:
+          containers:
+            - name: ping-server
+              image: ghcr.io/homelab-peej/ping-server-test:latest
+              ports:
+                - containerPort: 8080
+              livenessProbe:
+                httpGet:
+                path: /healthz
+                port: 8080
+                initialDelaySeconds: 5
+                periodSeconds: 10
+                failureThreshold: 2
+              readinessProbe:
+                httpGet:
+                path: /readyz
+                port: 8080
+                initialDelaySeconds: 5
+                periodSeconds: 2
+                failureThreshold: 2
+              startupProbe:
+                httpGet:
+                path: /startz
+                port: 8080
+                initialDelaySeconds: 5
+                periodSeconds: 2
+                failureThreshold: 2
    ```
 
 2. **Create a Service Manifest (`ping-svc.yaml`):**
@@ -56,16 +56,16 @@ This repository contains a simple HTTP web server that responds with "pong" when
    apiVersion: v1
    kind: Service
    metadata:
-   name: ping-server
-   labels:
-      app.kubernetes.io/name: ping-server
+     name: ping-server
+     labels:
+       app.kubernetes.io/name: ping-server
    spec:
-   type: LoadBalancer
-   ports:
-      - port: 80
+     type: LoadBalancer
+     ports:
+       - port: 80
          targetPort: 8080
-   selector:
-      app.kubernetes.io/name: ping-server
+     selector:
+       app.kubernetes.io/name: ping-server
    ```
 
 3. **Deploy the Application to Kubernetes:**
