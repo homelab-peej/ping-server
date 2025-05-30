@@ -17,7 +17,7 @@ COPY . .
 RUN CGO_ENABLED=0 go build -o ping-server .
 
 # Stage 2: Use a minimal Alpine image as the base
-FROM alpine:3.21
+FROM alpine:3.22
 
 # Install BusyBox
 RUN apk add --no-cache busybox curl
